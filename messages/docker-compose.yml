@@ -1,0 +1,22 @@
+version: "3.3"
+
+services:
+  db:
+    container_name: prive-etl-db
+    image: mariadb
+    restart: unless-stopped
+    ports:
+    - "${CDH_MYSQL_PORT}:3306"
+    networks:
+      - services
+    volumes:
+      - ".mysql:/var/lib/mysql/"
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: rustlove_db
+
+
+networks:
+  services:
