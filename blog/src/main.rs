@@ -1,11 +1,13 @@
 use dotenv::dotenv;
 use std::env;
 
-fn main() {
+type Result = std::io::Result<()>;
+
+fn main() -> Result {
 	dotenv().ok();
 
 	env::set_var("RUST_LOG", "actix_web=info");
-	env_logger.init();
+	env_logger::init();
 
 	let database_url = env::var("DATABASE_URL").expect("DATABSE_URL must be set");
 
