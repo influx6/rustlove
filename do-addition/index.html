@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="module">
+			async function init() {
+				const { instance } = await WebAssembly.instantiateStreaming(fetch("./target/wasm32-unknown-unknown/release/do_addition.wasm"));
+				const answer = instance.exports.add(1, 2);
+				console.log("Answer: ", answer);
+
+				document.querySelector("body").innerHtml = ""+ answer;
+			}
+			init()
+		</script>
+	</head>
+	<body></body>
+</html>
